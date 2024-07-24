@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post
+{% endblock %}
+
+
+{% block body %}
+	<h1>Article</h1>
+	<article>
+		<a href="{{path('index')}}">&#8592;</a>
+		<h2>{{ post.title | capitalize }}</h2>
+		{# <small>{{ user.username }}</small> #}
+		{# Symfony récupère directement l'user et le met à la place de la clé étrangère, et username car ça garde la privacy de l'utilisateur #}
+		<small>{{ post.author.username }}</small>
+
+		<p>{{ post.content }}</p>
+
+		<time>{{ post.publishedAt | date("d/m/Y H:i:s", "Europe/Paris") }}</time>
+	</article>
+{% endblock %}

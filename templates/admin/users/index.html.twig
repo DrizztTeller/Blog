@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin users Index
+{% endblock %}
+
+
+{% block body %}
+		<h1>Liste des users Admin</h1>
+		<section class="table">
+			<div class="row">
+				<h4 class="cell">ID</h4>
+				<h4 class="cell">Pseudo</h4>
+				<h4 class="cell"></h4>
+				<h4 class="cell"></h4>
+			</div>
+			{% for user in users %}
+				<div
+					class="row {{ user.id is odd ? 'blue' : 'green' }}">
+					{# | = pipe   , utilisé pour mettre un filter #}
+					<h4 class="cell">{{ user.id | capitalize }}</h4>
+					<h4 class="cell">{{ user.username | capitalize }}</h4>
+					<p class="cell">
+						<a href="{{ path('admin_users_show', {id: user.id}) }}">Voir</a>
+					</p>
+					<p class="cell">
+						<a href="{{ path('admin_users_edit', {id: user.id}) }}">Modifier</a>
+					</p>
+				</div>
+			{% endfor %}
+					<p class="cell">
+						<a href="{{ path('admin_users_new') }}">Nouveau</a>
+					</p>
+		</section>
+{% endblock %}

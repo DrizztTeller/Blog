@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin User
+{% endblock %}
+
+
+{% block body %}
+	<h1>User Admin</h1>
+	<a href="{{path('admin_users_index')}}">&larr;</a>
+	<article>
+		<h2>{{ user.title | capitalize }}</h2>
+
+		<p>{{ user.content }}</p>
+
+		<time>{{ user.publishedAt | date("d/m/Y", "Europe/Paris") }}</time>
+	</article>
+{% endblock %}

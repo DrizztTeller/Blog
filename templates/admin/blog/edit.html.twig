@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Post Edit
+{% endblock %}
+
+
+{% block body %}
+	<h1>Modification Post</h1>
+	<a href="{{path('admin_blog_index')}}">&larr;</a>
+
+	{{ form_start(form) }}
+	{{ form_row(form.title, {label : "Titre"}) }}
+	{{ form_row(form.slug) }}
+	{{ form_row(form.summary , {label : "Résumé"}) }}
+	{{ form_row(form.content, {label : "Texte de l\'article"}) }}
+	<button type="submit">Modifier</button>
+	{{ form_end(form)}}
+
+	<!-- Remplacement du <a> par une structure qui utilise l'attribut onclick -->
+	<form
+		action="{{ path('admin_blog_del', {id: post.id}) }}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément?');">
+		<!-- Utilisation de CSRF pour la sécurité si nécessaire -->
+		<button type="submit">Supprimer</button>
+	</form>
+
+	
+	{# <a href="{{ path('admin_blog_del', {id: post.id}) }}" onclick="confirm('Êtes-vous sûr de vouloir supprimer cet élément?')">Supprimer a</a> #}
+{# 
+	<button onclick="if (confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')) { window.location.href = '{{ path('admin_blog_del', {id: post.id}) }}'; }">
+		Supprimer btn
+	</button> #}
+
+
+
+{% endblock %}

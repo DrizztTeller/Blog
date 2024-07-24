@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Post Index
+{% endblock %}
+
+
+{% block body %}
+	<h1>Liste des articles Admin</h1>
+	{# Table en css plus rapide à charger #}
+	<section class="table">
+		<div class="row">
+			<h4 class="cell">ID</h4>
+			<h4 class="cell">Titre</h4>
+			<h4 class="cell">Date de publication</h4>
+			<h4 class="cell"></h4>
+			<h4 class="cell"></h4>
+		</div>
+		{% for post in posts %}
+			<div
+				class="row {{ post.id is odd ? 'blue' : 'green' }}">
+				{# | = pipe   , utilisé pour mettre un filter #}
+				<h4 class="cell">{{ post.id | capitalize }}</h4>
+				<h4 class="cell">{{ post.title | capitalize }}</h4>
+				<time class="cell">{{ post.publishedAt | date("d/m/Y", "Europe/Paris") }}</time>
+				<p class="cell">
+					<a href="{{ path('admin_blog_show', {id: post.id}) }}">Voir</a>
+				</p>
+				<p class="cell">
+										<a href="{{ path('admin_blog_edit', {id: post.id}) }}">Modifier</a>
+									</p>
+				{# <time>{{ post.publishedAt | date("d m Y", "Europe/Paris") }}</time> #}
+			</div>
+		{% endfor %}
+		<p class="cell">
+			<a href="{{ path('admin_blog_new') }}">Nouveau</a>
+		</p>
+	</section>
+{% endblock %}

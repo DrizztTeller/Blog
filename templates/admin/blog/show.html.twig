@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Post
+{% endblock %}
+
+
+{% block body %}
+	<h1>Article Admin</h1>
+	<a href="{{path('admin_blog_index')}}">&larr;</a>
+	<article>
+		<h2>{{ post.title | capitalize }}</h2>
+
+		<p>{{ post.content }}</p>
+
+		<time>{{ post.publishedAt | date("d/m/Y", "Europe/Paris") }}</time>
+	</article>
+{% endblock %}

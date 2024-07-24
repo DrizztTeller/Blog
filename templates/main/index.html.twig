@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index
+{% endblock %}
+
+
+{% block body %}
+	<h1>Liste des articles</h1>
+	<section class="list">
+		{% for post in posts %}
+			<article class="list__article">
+				{# | = pipe   , utilisé pour mettre un filter #}
+				<h2>{{ post.title | capitalize }}</h2>
+				<p>{{ post.summary }}</p>
+				<p>
+					<a href="{{ path('show', {id: post.id}) }}">Voir article</a>
+				</p>
+				<time>{{ post.publishedAt | date("d/m/Y", "Europe/Paris") }}</time>
+				{# <time>{{ post.publishedAt | date("d m Y", "Europe/Paris") }}</time> #}
+			</article>
+		{% endfor %}
+	</section>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin New User
+{% endblock %}
+
+
+{% block body %}
+
+	<h1>
+		Ajouter un utilisateur</h1>
+	<a href="{{path('admin_users_index')}}">&larr;</a>
+
+	{# form>(div.form__div>label{label $}+input)*7 #}
+	{# <form action="" method="POST">
+			<div class="form__div">
+				<label for="">label 1</label><input type="text"></div>
+			<div class="form__div">
+				<label for="">label 2</label><input type="text"></div>
+			<div class="form__div">
+				<label for="">label 3</label><input type="text"></div>
+			<div class="form__div">
+				<label for="">label 4</label><input type="text"></div>
+			<div class="form__div">
+				<label for="">label 5</label><input type="text"></div>
+			<div class="form__div">
+				<label for="">label 6</label><input type="text"></div>
+			<div class="form__div">
+				<label for="">label 7</label><input type="text"></div>
+	
+			<button type="submit">Ajouter</button>
+		</form> #}
+
+
+{% endblock %}
